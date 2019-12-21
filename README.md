@@ -1,2 +1,1 @@
-# ProjetoIA Individual
- 
+# project.ia
