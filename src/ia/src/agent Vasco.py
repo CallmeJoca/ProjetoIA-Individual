@@ -34,7 +34,7 @@ def callback(data):
 	if x != x_ant or y != y_ant:
 		if hasRoomChanged(x,y,room_ant):
 			G.add_edge(room_ant,getRoom(x,y))
-		print " x=%.1f y=%.1f" % (x,y)
+		print (" x=%.1f y=%.1f" % (x,y))
 	x_ant = x
 	y_ant = y
 	room_ant = getRoom(x,y)
@@ -45,7 +45,7 @@ def callback1(data):
 	global obj_ant
 	obj = data.data
 	if obj != obj_ant:
-		print "object is %s" % data.data
+		print ("object is %s" % data.data)
 		if data.data != "":
 			listasplited = data.data.split(',')
 			roomActual = getRoom(x_ant,y_ant)
@@ -136,13 +136,13 @@ def roomType(currRoom): #currRoom é a sala
 def pa():
 	if len(lista) > 0:
 		(a,b,c) = lista[-1]
-		print a
+		print (a)
 	else:
-		print "Insufficient information"
+		print ("Insufficient information")
 #----------------------------------------------------------------
 #pergunta B
 def pb():
-	print len(lista_no_rep)
+	print (len(lista_no_rep))
 # ---------------------------------------------------------------
 #pergunta C
 def pc():
@@ -157,7 +157,7 @@ def pc():
 			minDistEucl = disteucl
 			objectCloser = a
 	
-	print objectCloser
+	print (objectCloser)
 # ---------------------------------------------------------------
 #pergunta D
 def pd():
@@ -183,7 +183,7 @@ def pd():
 				minDistEucl = distEucl
 				objectCloser = a
 	
-	print objectCloser
+	print (objectCloser)
 # ---------------------------------------------------------------
 #pergunta E
 def pe():
@@ -196,7 +196,7 @@ def pe():
 		if listasplited[0] == 'book':		
 			count = count + 1
 	
-	print count
+	print (count)
 # ---------------------------------------------------------------
 #pergunta F
 def pf():
@@ -206,7 +206,7 @@ def pf():
 		if lista_no_rep[x] == "person_mary":
 			resposta = "I've seen Mary"
 			break	
-	print resposta
+	print (resposta)
 # ---------------------------------------------------------------
 #pergunta G
 def pg():
@@ -218,7 +218,7 @@ def pg():
 			resposta = "Joe is at Room " + str(getRoom(b,c))
 			break
 	
-	print resposta	
+	print (resposta)
 
 # ---------------------------------------------------------------
 #pergunta H
@@ -237,9 +237,9 @@ def ph():
 				break
 
 	if flag == 1:
-		print "Yes, there are"
+		print ("Yes, there are")
 	else:
-		print "I haven't seen any room with tables yet"
+		print ("I haven't seen any room with tables yet")
 # ---------------------------------------------------------------
 #pergunta I
 def pi():
@@ -249,7 +249,7 @@ def pi():
 	for i in xrange(0, len(listNodesVisited)): 	#transformar a lista em string
 		x = x + str(listNodesVisited[i]) + " "
 
-	print x	#imprimir uma menasgem bonita
+	print (x)	#imprimir uma menasgem bonita
 # ---------------------------------------------------------------
 #rede bayesiana
 def f_CHAIR( chair):
@@ -567,7 +567,7 @@ def f_PERSON(table, chair, person):
 # ---------------------------------------------------------------
 #pergunta j
 def pj():
-	print "The probability is: "+str((f_PERSON(False,True,True)*100))+"%"#table,chair,person
+	print ("The probability is: "+str((f_PERSON(False,True,True)*100))+"%")#table,chair,person
 # ---------------------------------------------------------------
 #pergunta K
 def pk():
@@ -594,10 +594,10 @@ def pk():
 			roomNoPerson = roomNoPerson +1
 
 	if(roomPersonTable == 0 and roomNoPerson == 0):
-		print "The probability is: "+str(0.0)+"%"
+		print ("The probability is: "+str(0.0)+"%")
 	else:
 		varx = (float(roomPersonTable)/(float(roomNoPerson)))
-		print "The probability is: "+str(varx *100)+"%"
+		print ("The probability is: "+str(varx *100)+"%")
 # ---------------------------------------------------------------
 #pergunta L
 def pl(x,y):
@@ -625,20 +625,20 @@ def pl(x,y):
 				chairs = chairs +1
 
 	if tables == 0 and books == 0 and computers == 0 and persons == 0 and chairs != 0:
-		print "Room " + str(currRoom) + " is a waiting room."
+		print ("Room " + str(currRoom) + " is a waiting room.")
 		flag = 1
 	elif chairs != 0 and tables != 0 and books != 0 and computers == 0:
-		print "Room " + str(currRoom) + " is a study room."
+		print ("Room " + str(currRoom) + " is a study room.")
 		flag = 1
 	elif computers != 0 and tables != 0 and chairs != 0:
-		print "Room " + str(currRoom) + " is a computer lab."
+		print ("Room " + str(currRoom) + " is a computer lab.")
 		flag = 1
 	elif tables == 1 and chairs >= 2: #significa que meeting room tem de ter 1 mesa e 2 ou mais cadeiras
-		print "Room " + str(currRoom) + " is a meeting room."
+		print ("Room " + str(currRoom) + " is a meeting room.")
 		flag = 1
 	
 	if flag == 0:
-		print "Room " + str(currRoom) + " is a generic room."
+		print ("Room " + str(currRoom) + " is a generic room.")
 # ---------------------------------------------------------------
 #pergunta M
 def pm():
@@ -659,7 +659,7 @@ def pm():
 				listaFree.append(i)
 		else:
 			continue;
-	print listaFree
+	print (listaFree)
 
 # ---------------------------------------------------------------
 #Pergunta N
@@ -689,15 +689,15 @@ def pn():
 				listComputers.append(listOfLists[roomMary][t])		
 	
 		if len(listComputers) == 0:
-			print "I haven't recognized any computer in the same room as Mary, so i can't say what computer Mary prefers."
+			print ("I haven't recognized any computer in the same room as Mary, so i can't say what computer Mary prefers.")
 		elif len(listComputers) == 1:
 			a = str(listComputers[0])
 			if a[:16] == 'computer_windows':
-				print "I think Mary prefers Windows computers."
+				print ("I think Mary prefers Windows computers.")
 			elif a[:14] == 'computer_apple':
-				print "I think Mary prefers Apple computers."
+				print ("I think Mary prefers Apple computers.")
 			elif a[:16] == 'computer_windows' and a[:14] == 'computer_apple':
-				print "I think Mary prefers other brand..." 
+				print ("I think Mary prefers other brand...")
 		elif len(listComputers) > 1:
 			for w in xrange(0, len(listComputers)):
 				for n in xrange(0, len(lista)): 
@@ -712,13 +712,13 @@ def pn():
 								minDist = distEucl
 								
 			if prefPc[:16] == 'computer_windows':
-				print "I think Mary prefers Windows computers."
+				print ("I think Mary prefers Windows computers.")
 			elif prefPc[:14] == 'computer_apple':
-				print "I think Mary prefers Apple computers."
+				print ("I think Mary prefers Apple computers.")
 			elif prefPc[:16] == 'computer_windows' and prefPc[:14] == 'computer_apple':
-				print "I think Mary prefers other brand..." 
+				print ("I think Mary prefers other brand...")
 	elif roomMary == -1:
-		print "I haven't seen Mary yet, so i can't say what computer Mary prefers."
+		print ("I haven't seen Mary yet, so i can't say what computer Mary prefers.")
 
 # ---------------------------------------------------------------
 #Pergunta O
@@ -735,12 +735,12 @@ def po(x,y):
 					flag = 1			
 		
 			if flag == 1:
-				print "No, you don't."
+				print ("No, you don't.")
 				break
 		if flag == 0:
-			print "Yes, according to the representation of the world I have at the moment, you must pass at room 7 to reach room 9."
+			print ("Yes, according to the representation of the world I have at the moment, you must pass at room 7 to reach room 9.")
 	else:
-		print "I haven't recognized room 9 yet."
+		print ("I haven't recognized room 9 yet.")
 # ---------------------------------------------------------------
 #Pergunta P
 def pp(x,y):
@@ -762,15 +762,15 @@ def pp(x,y):
 				caminhoMaisCurto = list(nx.dijkstra_path(G,roomActual,listaCL[i]))
 				if (len(maisCurto) > len(caminhoMaisCurto)):
 					maisCurto = caminhoMaisCurto
-			print maisCurto
+			print (maisCurto)
 		else:
-			print "There are no recognized computer lab room yet."
+			print ("There are no recognized computer lab room yet.")
 	else:
-		print "I'm already in a computer lab."
+		print ("I'm already in a computer lab.")
 # ---------------------------------------------------------------
 # questions_keyboard callback
 def callback2(data):
-	print "question is %s" % data.data
+	print ("question is %s" % data.data)
 	if data.data == 'a':
 		pa()
 	if data.data == 'b':
